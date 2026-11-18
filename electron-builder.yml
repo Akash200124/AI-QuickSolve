@@ -1,0 +1,55 @@
+appId: com.aiquicksolve.app
+productName: AI QuickSolve
+artifactName: "AI-QuickSolve-Setup-${version}.exe"
+copyright: Copyright © 2024 AI QuickSolve
+
+directories:
+  buildResources: resources
+  output: dist-build
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - resources/**/*
+  - "!**/*.ts"
+  - "!**/*.tsx"
+  - "!**/node_modules/**"
+  - "!**/.git/**"
+
+extraResources:
+  - from: backend
+    to: backend
+    filter:
+      - "**/*"
+      - "!**/__pycache__/**"
+      - "!**/*.pyc"
+      - "!**/tests/**"
+  - from: resources/icons
+    to: icons
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: resources/icons/icon.ico
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  allowElevation: false
+  installerIcon: resources/icons/icon.ico
+  uninstallerIcon: resources/icons/icon.ico
+  installerHeader: resources/icons/icon.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: AI QuickSolve
+  perMachine: false
+  deleteAppDataOnUninstall: false
+  include: resources/installer/custom.nsh
+
+publish:
+  provider: generic
+  url: https://releases.aiquicksolve.example.com/
+  channel: latest

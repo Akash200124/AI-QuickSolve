@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-electron/
+dist-build/
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/logs/
+backend/ai_quicksolve.db
+.env
+*.log
+.DS_Store
+Thumbs.db
+resources/icons/icon.ico
+
